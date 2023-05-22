@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Quiz</title>
+    <link rel="sylesheet" href="./assets/css/reset.css"/>
+    <link rel="stylesheet" href="./assets/css/style.css"/>
+</head>
+<body>
+    <header>
+        <p><button id="highscore-button">View Highscores</button></p>
+        <p id="timer">Time: <span id="time-left">60</span></p>
+    </header>
+    <main>
+    <section class="content" id="before-start">
+        <h1>Coding Quiz</h1>
+        <p>This is a game that tests your coding knowledge. You will have 60 seconds to answer three questions. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+        <button id="start-button">Start</button>
+    </section>
+    <section class="content" id="question1-container" style="display:none;">
+        <h2 id="question1">Commonly used data types do not include:</h2>
+        <ul id="question1-answers">
+            <li><button>Strings</button></li>
+            <li><button>Booleans</button></li>
+            <li><button>Alerts</button></li>
+            <li><button>Numbers</button></li>
+        </ul>
+    </section>
+    <section class="content" id="question2-container" style="display:none;">
+        <h2 id="question2">The condition in an if/else statement is enclosed With:</h2>
+        <ul id="question2-answers">
+            <li><button>Quotes</button></li>
+            <li><button>Curly Brackets</button></li>
+            <li><button>Parentheses</button></li>
+            <li><button>Square Brackets</button></li>
+        </ul>
+    </section>
+    <section class="content" id="question3-container" style="display:none;">
+        <h2 id="question3">Arrays in JavaScript can be used to store:</h2>
+        <ul id="question3-answers">
+            <li><button>Numbers and Strings</button></li>
+            <li><button>Booleans</button></li>
+            <li><button>Other Arrays</button></li>
+            <li><button>All of the Above</button></li>
+        </ul>
+    </section>
+    <section class="content" id="highscore-screen" style="display:none">
+        <h2>Highscores:</h2>
+        
+    </section>
+    </main>
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
