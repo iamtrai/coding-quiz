@@ -20,17 +20,30 @@ main {
     margin-right: 30%;
 }
 
+li {
+    margin-top: 3px;
+}
 .content {
     margin-top: 50px;
 }
 
-.content h1 {
+h1 {
     margin-bottom: 5px;
+    font-size: 32px;
+}
+
+h2 {
+    font-size: 30px;
 }
 
 .content p {
     margin-top: 5px;
 }
+
+.content button {
+    font-size: 20px;
+}
+
 #before-start {
     display: flex;
     flex-direction: column;
