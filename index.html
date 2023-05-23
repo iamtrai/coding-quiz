@@ -24,33 +24,42 @@
     <section class="content" id="question1-container" style="display:none;">
         <h2 id="question1">Commonly used data types do not include:</h2>
         <ul id="question1-answers">
-            <li><button id="q1inc">Strings</button></li>
-            <li><button id="q1inc">Booleans</button></li>
+            <li><button class="q1inc">Strings</button></li>
+            <li><button class="q1inc">Booleans</button></li>
             <li><button id="q1cor">Alerts</button></li>
-            <li><button id="q1inc">Numbers</button></li>
+            <li><button class="q1inc">Numbers</button></li>
         </ul>
     </section>
     <section class="content" id="question2-container" style="display:none;">
         <h2 id="question2">The condition in an if/else statement is enclosed with:</h2>
         <ul id="question2-answers">
-            <li><button id="q2inc">Quotes</button></li>
-            <li><button id="q2inc">Curly Brackets</button></li>
+            <li><button class="q2inc">Quotes</button></li>
+            <li><button class="q2inc">Curly Brackets</button></li>
             <li><button id="q2cor">Parentheses</button></li>
-            <li><button id="q2inc">Square Brackets</button></li>
+            <li><button class="q2inc">Square Brackets</button></li>
         </ul>
     </section>
     <section class="content" id="question3-container" style="display:none;">
         <h2 id="question3">Arrays in JavaScript can be used to store:</h2>
         <ul id="question3-answers">
-            <li><button id="q3inc">Numbers and Strings</button></li>
-            <li><button id="q3inc">Booleans</button></li>
-            <li><button id="q3inc">Other Arrays</button></li>
+            <li><button class="q3inc">Numbers and Strings</button></li>
+            <li><button class="q3inc">Booleans</button></li>
+            <li><button class="q3inc">Other Arrays</button></li>
             <li><button id="q3cor">All of the Above</button></li>
         </ul>
     </section>
+    <section class="content" id="done-page" style="display:none">
+        <h2>All Done!</h2>
+        <p>Your final score is <span id="final-score">0</span>.</p>
+        <p>Enter initials:<input type="text" id="initials-input"></p>
+        <button id="submit-button">Submit</button>
+    </section>
     <section class="content" id="highscore-screen" style="display:none">
         <h2>Highscores:</h2>
-        <input type="text">
+        <ul id="score-list"></ul>
+            <li>test item</li>
+        <button id="back-button">Go back</button>
+        <button id="clear-scores">Clear high scores</button>
     </section>
     </main>
     <script src="./assets/js/script.js"></script>

@@ -23,6 +23,7 @@ main {
 li {
     margin-top: 3px;
 }
+
 .content {
     margin-top: 50px;
 }
@@ -78,4 +79,8 @@ button:hover {
 
 #start-button:hover {
     background-color: #8579f8;
+}
+
+#highscore-screen button {
+    margin-top: 10px;
 }
