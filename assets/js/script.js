@@ -1,8 +1,16 @@
+// TODO: SORTING OF SCORES, STORAGE AND RETREIVAL OF SCORES 
+// need to figure out render method: get list items as array, sort, iterate create li and append
+// render scores when view scores button clicked
+// check if list items can be "get" as an array, or convert HTML collection to array
+
 var timer = document.getElementById("time-left");
 var timeLeft = 60;
 var finalScore = document.getElementById("final-score");
-var initialsInput = document.getElementById("initials-input")
-
+var initialsInput = document.getElementById("initials-input");
+var gameInterval;
+var scoreList = document.getElementById("score-list")
+// need to redirect functions with highscorelistitems to push and pull from storage instead of html
+var highScoresListItems = document.getElementsByClassName("highscorelistitem")
 // Answer buttons
 var q1Wrong = document.getElementsByClassName("q1inc");
 var q1Right = document.getElementById("q1cor");
@@ -26,7 +34,7 @@ var question2 = document.getElementById("question2-container");
 var question3 = document.getElementById("question3-container");
 var doneScreen = document.getElementById("done-page")
 
-
+// Various functions
 function startGame() {
     gameInterval = setInterval(function() {
         timeLeft--;
@@ -52,11 +60,11 @@ function toQuestionThree() {
     question3.setAttribute("style", "display:visible");
 }
 
-function toDoneScreen () {
+function toDoneScreen() {
     question3.setAttribute("style", "display:none");
     doneScreen.setAttribute("style", "display:visible");
     clearInterval(gameInterval);
-
+    finalScore.textContent = timeLeft;
 }
 
 function toHighscores() {
@@ -64,9 +72,19 @@ function toHighscores() {
     question2.setAttribute("style", "display:none");
     question3.setAttribute("style", "display:none");
     beforeStart.setAttribute("style", "display:none");
-    highScores.setAttribute("style", "display:visible");
     highScoreButton.setAttribute("style", "display:none");
+    doneScreen.setAttribute("style", "display:none");
+    highScores.setAttribute("style", "display:visible");
     clearInterval(gameInterval);
+}
+// needs work, may scrap
+function renderHighscores() {
+localStorage.getItem("scores", highScoresListItems)
+
+}
+// needs work, may scrap
+function storeHighscores() {
+localStorage.setItem("scores", highScoresListItems)
 }
 
 //  Button functionality with event listeners
@@ -110,11 +128,19 @@ q3Right.addEventListener("click", function(event) {
     toDoneScreen();
 })
 
-// need to add append list items, storage of scores, sorting of scores, rendering of scores
+// need to add storage of scores, sorting of scores, rendering of scores
 submitInitialsButton.addEventListener("click", function(event) {
     event.stopPropagation();
+    if (!initialsInput.value) {
+        alert("Please enter your initials!")} else {
     doneScreen.setAttribute("style", "display:none")
+    var scoreInitials = document.createElement("li")
+    scoreInitials.textContent =" " + timeLeft + " - " + initialsInput.value;
+    scoreList.append(scoreInitials)
+    scoreInitials.className += "highscorelistitem";
+    initialsInput.value = "";
     toHighscores();
+    }
 })
 
 goBackButton.addEventListener("click", function(event) {
@@ -136,3 +162,9 @@ startButton.addEventListener("click", function(event) {
     startGame();
 })
 
+clearScoresButton.addEventListener("click", function(event) {
+    event.stopPropagation();
+     for (var i=highScoresListItems.length - 1; i >= 0; --i) {
+        highScoresListItems[i].remove();
+     }
+})

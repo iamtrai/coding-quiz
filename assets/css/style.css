@@ -19,8 +19,14 @@ main {
     margin-left: 30%;
     margin-right: 30%;
 }
+ul {
+    margin-top: 1px;
+    margin-bottom: 1px;
+    list-style-type: none;
+}
 
 li {
+    margin-top: 3px;
     margin-top: 3px;
 }
 
@@ -35,6 +41,7 @@ h1 {
 
 h2 {
     font-size: 30px;
+    margin-bottom: 3px;
 }
 
 .content p {
@@ -83,4 +90,8 @@ button:hover {
 
 #highscore-screen button {
     margin-top: 10px;
+}
+
+.highscorelistitem {
+    text-transform: uppercase;
 }
