@@ -12,22 +12,12 @@ display: inline-flex;
 width: 100%;
 justify-content: space-between;
 }
-
+/* Main content styling */
 main {
     display: flex;
     justify-content: center;
     margin-left: 30%;
     margin-right: 30%;
-}
-ul {
-    margin-top: 1px;
-    margin-bottom: 1px;
-    list-style-type: none;
-}
-
-li {
-    margin-top: 3px;
-    margin-top: 3px;
 }
 
 .content {
@@ -48,6 +38,23 @@ h2 {
     margin-top: 5px;
 }
 
+/* Syling of all List elements including answers and scores */
+ul {
+    margin-top: 1px;
+    margin-bottom: 1px;
+    list-style-type: none;
+}
+
+li {
+    margin-top: 3px;
+    margin-top: 3px;
+}
+
+.highscorelistitem {
+    text-transform: uppercase;
+}
+
+/* Button styling */
 .content button {
     font-size: 20px;
 }
@@ -90,8 +97,4 @@ button:hover {
 
 #highscore-screen button {
     margin-top: 10px;
-}
-
-.highscorelistitem {
-    text-transform: uppercase;
 }

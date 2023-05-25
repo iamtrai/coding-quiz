@@ -1,16 +1,13 @@
-// TODO: SORTING OF SCORES, STORAGE AND RETREIVAL OF SCORES 
-// need to figure out render method: get list items as array, sort, iterate create li and append
-// render scores when view scores button clicked
-// check if list items can be "get" as an array, or convert HTML collection to array
-
 var timer = document.getElementById("time-left");
 var timeLeft = 60;
 var finalScore = document.getElementById("final-score");
 var initialsInput = document.getElementById("initials-input");
 var gameInterval;
 var scoreList = document.getElementById("score-list")
-// need to redirect functions with highscorelistitems to push and pull from storage instead of html
 var highScoresListItems = document.getElementsByClassName("highscorelistitem")
+var scoresArray = [];
+var nonDupScoreArr = [];
+
 // Answer buttons
 var q1Wrong = document.getElementsByClassName("q1inc");
 var q1Right = document.getElementById("q1cor");
@@ -77,14 +74,26 @@ function toHighscores() {
     highScores.setAttribute("style", "display:visible");
     clearInterval(gameInterval);
 }
-// needs work, may scrap
-function renderHighscores() {
-localStorage.getItem("scores", highScoresListItems)
 
+function renderHighscores() {
+    var loadedScores = JSON.parse(localStorage.getItem("scores"));
+    loadedScores.concat(scoresArray);
+    console.log(loadedScores);
+    nonDupScoreArr=[...new Set(loadedScores)]
+    nonDupScoreArr.sort().reverse();
+    for (var i=highScoresListItems.length - 1; i >= 0; --i) {
+        highScoresListItems[i].remove();
+     }
+    for(var i=0; i<nonDupScoreArr.length; i++) {
+        var scoreInitials = document.createElement("li")
+        scoreInitials.textContent = nonDupScoreArr[i]
+        scoreList.append(scoreInitials)
+        scoreInitials.className += "highscorelistitem";
+    }
 }
-// needs work, may scrap
+
 function storeHighscores() {
-localStorage.setItem("scores", highScoresListItems)
+localStorage.setItem("scores", JSON.stringify(nonDupScoreArr))
 }
 
 //  Button functionality with event listeners
@@ -128,7 +137,6 @@ q3Right.addEventListener("click", function(event) {
     toDoneScreen();
 })
 
-// need to add storage of scores, sorting of scores, rendering of scores
 submitInitialsButton.addEventListener("click", function(event) {
     event.stopPropagation();
     if (!initialsInput.value) {
@@ -136,9 +144,15 @@ submitInitialsButton.addEventListener("click", function(event) {
     doneScreen.setAttribute("style", "display:none")
     var scoreInitials = document.createElement("li")
     scoreInitials.textContent =" " + timeLeft + " - " + initialsInput.value;
-    scoreList.append(scoreInitials)
     scoreInitials.className += "highscorelistitem";
     initialsInput.value = "";
+    scoresArray.push(scoreInitials.textContent);
+    console.log(scoresArray)
+    nonDupScoreArr=[...new Set(scoresArray)]
+    nonDupScoreArr.sort().reverse();
+    console.log(nonDupScoreArr);
+    storeHighscores();
+    renderHighscores();
     toHighscores();
     }
 })
@@ -167,4 +181,8 @@ clearScoresButton.addEventListener("click", function(event) {
      for (var i=highScoresListItems.length - 1; i >= 0; --i) {
         highScoresListItems[i].remove();
      }
+     scoresArray=[];
+     nonDupScoreArr=[];
+     storeHighscores();
 })
+ 
