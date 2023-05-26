@@ -73,6 +73,7 @@ function toHighscores() {
     doneScreen.setAttribute("style", "display:none");
     highScores.setAttribute("style", "display:visible");
     clearInterval(gameInterval);
+    renderHighscores()
 }
 
 function renderHighscores() {
@@ -142,17 +143,17 @@ submitInitialsButton.addEventListener("click", function(event) {
     if (!initialsInput.value) {
         alert("Please enter your initials!")} else {
     doneScreen.setAttribute("style", "display:none")
+    var loadedScores = JSON.parse(localStorage.getItem("scores"))
+    console.log(loadedScores);
     var scoreInitials = document.createElement("li")
     scoreInitials.textContent =" " + timeLeft + " - " + initialsInput.value;
     scoreInitials.className += "highscorelistitem";
     initialsInput.value = "";
-    scoresArray.push(scoreInitials.textContent);
-    console.log(scoresArray)
-    nonDupScoreArr=[...new Set(scoresArray)]
+    scoresArray.unshift(scoreInitials.textContent);
+    nonDupScoreArr=[...new Set(scoresArray.concat(loadedScores))]
     nonDupScoreArr.sort().reverse();
     console.log(nonDupScoreArr);
     storeHighscores();
-    renderHighscores();
     toHighscores();
     }
 })
